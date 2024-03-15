@@ -9,6 +9,7 @@ export const GET = async (req, { params }) => {
     const users = await User.findOne({ id });
     return NextResponse.json(users);
   } catch (error) {
+    console.log(error);
     throw new Error(error);
   }
 };
@@ -20,6 +21,7 @@ export const DELETE = async (request, { params }) => {
     await User.deleteOne({ id });
     return NextResponse.json("User deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete user!", error);
   }
 };

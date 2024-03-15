@@ -9,6 +9,7 @@ export const GET = async (req, { params }) => {
     const movies = await Movie.findOne({ id });
     return NextResponse.json(movies);
   } catch (error) {
+    console.log(error);
     throw new Error(error);
   }
 };
@@ -20,6 +21,7 @@ export const DELETE = async (request, { params }) => {
     await Movie.deleteOne({ id });
     return NextResponse.json("Movie deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete movie!", error);
   }
 };

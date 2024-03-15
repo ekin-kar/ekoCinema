@@ -1,14 +1,15 @@
 import { connectToDb } from "@/lib/connectDb";
-import { CinemaSalon } from "@/lib/models";
+import { Booking } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    const salon = await CinemaSalon.findOne({ id });
-    return NextResponse.json(salon);
+    const booking = await Booking.findOne({ id });
+    return NextResponse.json(booking);
   } catch (error) {
+    console.log(error);
     throw new Error(error);
   }
 };
@@ -17,9 +18,10 @@ export const DELETE = async (request, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    await CinemaSalon.deleteOne({ id });
-    return NextResponse.json("Salon deleted");
+    await Booking.deleteOne({ id });
+    return NextResponse.json("Booking deleted");
   } catch (error) {
-    throw new Error("Failed to delete salon!", error);
+    console.log(error);
+    throw new Error("Failed to delete booking!", error);
   }
 };

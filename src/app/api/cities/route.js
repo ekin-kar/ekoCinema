@@ -8,6 +8,7 @@ export const GET = async () => {
     const cities = await City.find();
     return NextResponse.json(cities);
   } catch (error) {
+    console.log(error);
     throw new Error("Error getting cities!", error);
   }
 };
@@ -23,6 +24,7 @@ export const POST = async (req) => {
       newCity,
     });
   } catch (error) {
+    console.log(error);
     throw new Error("Error creating city!", error);
   }
 };
@@ -33,6 +35,7 @@ export const DELETE = async () => {
     await City.deleteMany();
     return NextResponse.json("All cities deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete all cities!", error);
   }
 };

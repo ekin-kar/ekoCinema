@@ -8,6 +8,7 @@ export const GET = async () => {
     const movies = await Movie.find();
     return NextResponse.json(movies);
   } catch (error) {
+    console.log(error);
     throw new Error("Error getting movies!", error);
   }
 };
@@ -23,6 +24,7 @@ export const POST = async (req) => {
       newMovie,
     });
   } catch (error) {
+    console.log(error);
     throw new Error("Error creating a movie!", error);
   }
 };
@@ -33,6 +35,7 @@ export const DELETE = async () => {
     await Movie.deleteMany();
     return NextResponse.json("All movies deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete all movies!", error);
   }
 };

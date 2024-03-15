@@ -22,6 +22,31 @@ const citySchema = new Schema({
     required: true,
     unique: true,
   },
+  cinemas: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Cinema",
+    },
+  ],
+});
+
+const cinemaSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  cityId: {
+    type: Schema.Types.ObjectId,
+    ref: "City",
+    required: true,
+  },
+  salons: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "CinemaSalon",
+    },
+  ],
 });
 
 const cinemaSalonSchema = new Schema({
@@ -29,15 +54,27 @@ const cinemaSalonSchema = new Schema({
     type: String,
     required: true,
   },
-  city: {
+  cinemaId: {
     type: Schema.Types.ObjectId,
-    ref: "City",
+    ref: "Cinema",
     required: true,
   },
-  movies: [
+  schedule: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Movie",
+      movieId: {
+        type: Schema.Types.ObjectId,
+        ref: "Movie",
+        required: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+        required: true,
+      },
+      takenSeats: {
+        type: [String],
+        default: [],
+      },
     },
   ],
 });
@@ -49,44 +86,43 @@ const movieSchema = new Schema({
   },
   description: String,
   trailerUrl: String,
-});
-
-const seatSchema = new Schema({
-  number: {
-    type: String,
+  duration: {
+    type: Number,
     required: true,
   },
-  isBooked: {
-    type: Boolean,
-    default: false,
+  poster: String,
+  genre: String,
+  director: String,
+  actors: String,
+  releaseDate: {
+    type: Date,
+    required: true,
+    default: Date.now,
   },
-  cinemaSalon: {
-    type: Schema.Types.ObjectId,
-    ref: "CinemaSalon",
+  rating: {
+    type: Number,
+    required: true,
+  },
+  language: {
+    type: String,
     required: true,
   },
 });
 
 const bookingSchema = new Schema({
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  movie: {
+  scheduleId: {
     type: Schema.Types.ObjectId,
-    ref: "Movie",
-    required: true,
-  },
-  cinemaSalon: {
-    type: Schema.Types.ObjectId,
-    ref: "CinemaSalon",
+    ref: "CinemaSalon.schedule",
     required: true,
   },
   seats: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Seat",
+      type: String,
       required: true,
     },
   ],
@@ -98,11 +134,12 @@ const bookingSchema = new Schema({
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const City = mongoose.models.City || mongoose.model("City", citySchema);
+export const Cinema =
+  mongoose.models.Cinema || mongoose.model("Cinema", cinemaSchema);
 export const CinemaSalon =
   mongoose.models.CinemaSalon ||
   mongoose.model("CinemaSalon", cinemaSalonSchema);
 export const Movie =
   mongoose.models.Movie || mongoose.model("Movie", movieSchema);
-export const Seat = mongoose.models.Seat || mongoose.model("Seat", seatSchema);
 export const Booking =
   mongoose.models.Booking || mongoose.model("Booking", bookingSchema);

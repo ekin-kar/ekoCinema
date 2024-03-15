@@ -9,6 +9,7 @@ export const GET = async (req, { params }) => {
     const cities = await City.findOne({ id });
     return NextResponse.json(cities);
   } catch (error) {
+    console.log(error);
     throw new Error("Error getting the city!", error);
   }
 };
@@ -20,6 +21,7 @@ export const DELETE = async (request, { params }) => {
     await City.deleteOne({ id });
     return NextResponse.json("City deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete city!", error);
   }
 };

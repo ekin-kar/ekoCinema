@@ -8,6 +8,7 @@ export const GET = async () => {
     const users = await User.find();
     return NextResponse.json(users);
   } catch (error) {
+    console.log(error);
     throw new Error("Error getting users!", error);
   }
 };
@@ -23,6 +24,7 @@ export const POST = async (req) => {
       newUser,
     });
   } catch (error) {
+    console.log(error);
     throw new Error("Error creating a user!", error);
   }
 };
@@ -33,6 +35,7 @@ export const DELETE = async () => {
     await User.deleteMany();
     return NextResponse.json("All users deleted");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to delete all users!", error);
   }
 };
