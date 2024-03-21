@@ -1,0 +1,32 @@
+.container {
+  height: 100px;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+@media (max-width: 1366px) {
+  .container {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+.container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
+.logo {
+  font-weight: bold;
+}
