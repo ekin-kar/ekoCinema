@@ -2,7 +2,8 @@ import { getMovie, getSalon } from "./api";
 
 export const getAvaliableMovies = async (cinemas) => {
   const salons = [];
-  for (let cinema of cinemas) {
+  const cinemasArray = Array.isArray(cinemas) ? cinemas : [cinemas];
+  for (let cinema of cinemasArray) {
     for (let salonId of cinema.salons) {
       const salon = await getSalon(salonId);
       salons.push(salon);

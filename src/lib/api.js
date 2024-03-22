@@ -1,5 +1,5 @@
 import { connectToDb } from "./connectDb";
-import { City } from "./models";
+import { Cinema, City } from "./models";
 
 export const getCities = async () => {
   const cities = await fetch("http://localhost:3000/api/cities", {
@@ -40,6 +40,20 @@ export const getCinema = async (id) => {
     next: { revalidate: 1 },
   });
   return cinema.json();
+};
+
+export const getCinemaByName = async (name) => {
+  try {
+    connectToDb();
+    const modifiedName = name.replace(/-/g, " ").toLowerCase(); // Replace dashes with spaces and convert to lowercase
+    const cinema = await Cinema.findOne({
+      name: { $regex: new RegExp("^" + modifiedName + "$", "i") },
+    });
+    return cinema;
+  } catch (error) {
+    console.error("Error while searching cinema by name:", error);
+    throw error;
+  }
 };
 
 export const getMovies = async () => {

@@ -1,0 +1,36 @@
+.container {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px 20px 30px 20px;
+  background: #ececec;
+  border-radius: 5px;
+}
+
+.cinemas,
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.movies {
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--dark-blue);
+}

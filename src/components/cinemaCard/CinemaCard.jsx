@@ -1,11 +1,15 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./cinemacard.module.css";
 import Image from "next/image";
-const CinemaCard = ({ cinema }) => {
+const CinemaCard = ({ cinema, cityName }) => {
   const router = useRouter();
   const handleClick = () => {
-    router.push(`/${cinema.name.toLowerCase()}`);
+    router.push(
+      `/${cityName.toLowerCase()}/${cinema.name
+        .toLowerCase()
+        .replace(/\s/g, "-")}`
+    );
   };
 
   return (

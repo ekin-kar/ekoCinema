@@ -1,18 +1,21 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import styles from "./moviecard.module.css";
 import Image from "next/image";
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, cityName }) => {
   const router = useRouter();
-  const pathname = usePathname();
   const handleClick = () => {
-    router.push(`./${pathname}/${movie.title.toLowerCase()}`);
+    router.push(
+      `/${cityName.toLowerCase()}/movies/${movie.title
+        .toLowerCase()
+        .replace(/\s/g, "-")}`
+    );
   };
 
   return (
     <div className={styles.container} onClick={handleClick}>
       <div className={styles.imageContainer}>
-        <Image src={movie.poster} alt={movie.name} width={250} height={340} />
+        <Image src={movie.poster} alt={movie.title} width={250} height={340} />
       </div>
       <div className={styles.textContainer}>
         <p className={styles.movieName}>{movie.title}</p>

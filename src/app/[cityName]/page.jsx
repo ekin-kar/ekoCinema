@@ -20,7 +20,11 @@ const City = async ({ params }) => {
         <div>
           <ul className={styles.cinemas}>
             {cinemas.map((cinema) => (
-              <CinemaCard cinema={cinema} key={cinema._id} />
+              <CinemaCard
+                cinema={cinema}
+                cityName={city.name}
+                key={cinema._id}
+              />
             ))}
           </ul>
         </div>
@@ -30,7 +34,7 @@ const City = async ({ params }) => {
         <div>
           <ul className={styles.movies}>
             {movies.map((movie) => (
-              <MovieCard movie={movie} key={movie._id} />
+              <MovieCard movie={movie} cityName={city.name} key={movie._id} />
             ))}
           </ul>
         </div>
