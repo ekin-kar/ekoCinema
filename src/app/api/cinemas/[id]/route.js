@@ -1,13 +1,13 @@
 import { connectToDb } from "@/lib/connectDb";
-import { CinemaSalon } from "@/lib/models";
+import { Cinema } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    const salon = await CinemaSalon.findOne({ id });
-    return NextResponse.json(salon);
+    const cinema = await Cinema.findOne({ _id: id });
+    return NextResponse.json(cinema);
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -18,10 +18,10 @@ export const DELETE = async (request, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    await CinemaSalon.deleteOne({ id });
-    return NextResponse.json("Salon deleted");
+    await Cinema.deleteOne({ _id: id });
+    return NextResponse.json("Cinema deleted");
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to delete salon!", error);
+    throw new Error("Failed to delete cinema!", error);
   }
 };

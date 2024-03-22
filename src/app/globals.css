@@ -23,7 +23,7 @@ a {
 }
 
 .container {
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
   width: 1536px;
   margin: auto;
   padding-left: 30px;
@@ -36,8 +36,7 @@ a {
 .main {
   overflow-y: auto;
   border-radius: 7px;
-  height: calc(100vh - 100px);
-  padding: 20px;
+  min-height: calc(100vh - 150px);
   overflow-x: auto;
   white-space: nowrap;
 }

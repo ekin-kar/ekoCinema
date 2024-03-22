@@ -1,0 +1,33 @@
+.container {
+  height: 100px;
+  width: 200px;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.cityName {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.count {
+  font-weight: 700;
+}
+
+.countWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}

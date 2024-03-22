@@ -1,16 +1,16 @@
 import { connectToDb } from "@/lib/connectDb";
-import { Booking } from "@/lib/models";
+import { City } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    const booking = await Booking.findOne({ id });
-    return NextResponse.json(booking);
+    const cities = await City.findOne({ _id: id });
+    return NextResponse.json(cities);
   } catch (error) {
     console.log(error);
-    throw new Error(error);
+    throw new Error("Error getting the city!", error);
   }
 };
 
@@ -18,10 +18,10 @@ export const DELETE = async (request, { params }) => {
   const { id } = params;
   try {
     connectToDb();
-    await Booking.deleteOne({ id });
-    return NextResponse.json("Booking deleted");
+    await City.deleteOne({ _id: id });
+    return NextResponse.json("City deleted");
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to delete booking!", error);
+    throw new Error("Failed to delete city!", error);
   }
 };
