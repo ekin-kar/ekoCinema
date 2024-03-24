@@ -5,13 +5,19 @@ import NavLink from "./navLink/navLink";
 import Image from "next/image";
 
 const links = [
+  { title: "Home", path: "/" },
+  { title: "Movies", path: "/movies" },
+  {
+    title: "Pricing",
+    path: "/pricing",
+  },
+  {
+    title: "Kids",
+    path: "/kids",
+  },
   {
     title: "About",
     path: "/about",
-  },
-  {
-    title: "Logout",
-    path: "/login",
   },
 ];
 

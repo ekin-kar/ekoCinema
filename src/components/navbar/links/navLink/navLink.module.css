@@ -1,7 +1,12 @@
 .container {
   min-width: 100px;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: 500;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 800;
   text-align: center;
+  text-transform: uppercase;
+}
+.container:hover {
+  color: var(--yellow);
+  transition: ease 0.5s;
 }

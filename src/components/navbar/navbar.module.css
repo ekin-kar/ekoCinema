@@ -8,9 +8,84 @@
   color: var(--white);
 }
 
+.rightWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.langSelect {
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+}
+.option {
+  cursor: pointer;
+  background: none;
+  color: var(--dark-blue);
+  font-weight: 600;
+}
+
 .logo {
   font-size: 30px;
   font-weight: bold;
+  color: var(--yellow);
+  filter: invert(82%) sepia(14%) saturate(7455%) hue-rotate(13deg)
+    brightness(109%) contrast(97%);
+}
+.title {
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--white);
+}
+.title:hover {
+  color: var(--yellow);
+  transition: ease 0.5s;
+}
+
+.world {
+  filter: invert(82%) sepia(14%) saturate(7455%) hue-rotate(13deg)
+    brightness(109%) contrast(97%);
+  font-weight: 700;
+}
+.language {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.arrow {
+  filter: invert(93%) sepia(99%) saturate(5676%) hue-rotate(190deg)
+    brightness(117%) contrast(111%);
+}
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--yellow);
+  color: var(--dark-blue);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #fff568;
+  transition: ease 0.5s;
 }
 
 @media (max-width: 1366px) {
