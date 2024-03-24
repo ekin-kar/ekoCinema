@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   color: gray;
+  background-color: var(--dark-blue);
 }
 
 .logo {

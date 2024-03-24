@@ -1,5 +1,15 @@
-.container {
+.bg {
   min-height: inherit;
+  background-image: url("/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 1536px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,14 +17,16 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: 700;
   margin-bottom: 50px;
+  color: var(--white);
 }
 .text {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: var(--white);
 }
 
 .cityContainer {
@@ -25,4 +37,59 @@
   flex-wrap: wrap;
   padding: 20px;
   gap: 40px;
+}
+
+@media (max-width: 1720px) {
+  .container {
+    width: 1536px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .container {
+    width: 1366px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 864px;
+  }
+}
+
+@media (max-width: 864px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: 475px;
+  }
+}
+@media (max-width: 475px) {
+  .container {
+    width: 380px;
+  }
 }

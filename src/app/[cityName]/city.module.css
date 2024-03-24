@@ -1,4 +1,6 @@
 .container {
+  width: 1536px;
+  margin: auto;
   min-height: inherit;
   display: flex;
   flex-direction: column;
@@ -25,4 +27,59 @@
 .movies {
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1720px) {
+  .container {
+    width: 1536px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .container {
+    width: 1366px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 864px;
+  }
+}
+
+@media (max-width: 864px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: 475px;
+  }
+}
+@media (max-width: 475px) {
+  .container {
+    width: 380px;
+  }
 }
