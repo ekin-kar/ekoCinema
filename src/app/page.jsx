@@ -2,7 +2,7 @@ import CityCard from "@/components/cityCard/CityCard";
 import { getCities } from "@/lib/api";
 import styles from "./page.module.css";
 
-const page = async () => {
+const Main = async () => {
   const cities = await getCities();
   return (
     <div className={styles.bg}>
@@ -18,4 +18,4 @@ const page = async () => {
     </div>
   );
 };
-export default page;
+export default Main;
