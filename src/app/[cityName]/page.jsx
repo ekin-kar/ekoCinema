@@ -3,6 +3,7 @@ import styles from "./city.module.css";
 import CinemaCard from "@/components/cinemaCard/CinemaCard";
 import { getAvaliableMovies } from "@/lib/getters";
 import MovieCard from "@/components/movieCard/MovieCard";
+import MoviesSection from "@/components/moviesSection/MoviesSection";
 
 const City = async ({ params }) => {
   const { cityName } = params;
@@ -14,29 +15,29 @@ const City = async ({ params }) => {
   }
   const movies = await getAvaliableMovies(cinemas);
   return (
-    <div className={styles.container}>
-      <div className={styles.innerContainer}>
-        <h2>Cinemas in {city.name}</h2>
-        <div>
-          <ul className={styles.cinemas}>
-            {cinemas.map((cinema) => (
-              <CinemaCard
-                cinema={cinema}
-                cityName={city.name}
-                key={cinema._id}
-              />
-            ))}
-          </ul>
+    <div className={styles.bg}>
+      <div className={styles.container}>
+        <div className={styles.innerContainer}>
+          <h2 className={styles.header}>Cinemas in {city.name}</h2>
+          <div>
+            <ul className={styles.cinemas}>
+              {cinemas.map((cinema) => (
+                <CinemaCard
+                  cinema={cinema}
+                  cityName={city.name}
+                  key={cinema._id}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className={styles.innerContainer}>
-        <h2>Movies</h2>
-        <div>
-          <ul className={styles.movies}>
-            {movies.map((movie) => (
-              <MovieCard movie={movie} cityName={city.name} key={movie._id} />
-            ))}
-          </ul>
+        <div className={styles.innerContainer}>
+          <h2 className={styles.header}>Movies</h2>
+          <div>
+            <div className={styles.moviesWrapper}>
+              <MoviesSection cityName={city.name} otherMovies={movies} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

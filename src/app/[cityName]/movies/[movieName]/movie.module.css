@@ -1,0 +1,199 @@
+.bg {
+  background-image: url("/citybg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
+}
+
+.container {
+  width: 1536px;
+  padding-top: 50px;
+  margin: auto;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px 20px 30px 20px;
+  background: rgba(20, 20, 20, 0.1);
+  border-radius: 5px;
+}
+.header {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.header2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--yellow);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  text-wrap: wrap;
+}
+
+.ticketWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.ticket {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--yellow);
+  color: var(--dark-blue);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ticket:hover {
+  background-color: #fff568;
+  transition: ease 0.5s;
+}
+
+.smallDetails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.badges {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.badgeOutline {
+  padding: 5px 10px;
+  border: 2px solid var(--white);
+  border-radius: 5px;
+  color: var(--yellow);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.inlineWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.actors {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.moviesWrapper {
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.poster {
+  border-radius: 10px;
+}
+
+.icon {
+  filter: invert(82%) sepia(14%) saturate(7455%) hue-rotate(13deg)
+    brightness(109%) contrast(97%);
+}
+
+.smallText {
+  font-weight: 600;
+  color: var(--white);
+}
+@media (max-width: 1720px) {
+  .container {
+    width: 1536px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .container {
+    width: 1366px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 864px;
+  }
+}
+
+@media (max-width: 864px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: 475px;
+  }
+}
+@media (max-width: 475px) {
+  .container {
+    width: 380px;
+  }
+}

@@ -1,7 +1,7 @@
 .container {
   height: 270px;
   width: 300px;
-  background-color: var(--dark-blue);
+  background: rgba(20, 20, 20, 0.4);
   color: var(--white);
   display: flex;
   flex-direction: column;

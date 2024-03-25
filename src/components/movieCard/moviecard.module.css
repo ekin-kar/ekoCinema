@@ -1,14 +1,14 @@
 .container {
   height: 400px;
   width: 250px;
-  background-color: var(--dark-blue);
   color: var(--white);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
+  margin-bottom: 40px;
 }
 
 .cinemaName {
@@ -19,11 +19,26 @@
 .textContainer {
   display: flex;
   flex: 1;
+  width: 100%;
   flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-  justify-content: center;
+  gap: 10px;
+  justify-content: space-between;
   align-items: center;
+}
+
+.titleWrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+.detailsWrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
 .imageContainer {
@@ -34,14 +49,36 @@
 }
 
 .movieName {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   text-wrap: wrap;
-  text-align: center;
+  color: var(--yellow);
 }
-
+.movieDuration {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.movieYear {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+}
 .container:hover {
   cursor: pointer;
   transform: scale(1.03);
   transition: transform 0.3s ease;
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.movieRating {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--yellow);
 }
