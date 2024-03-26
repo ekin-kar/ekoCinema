@@ -1,4 +1,4 @@
-import { getMovie, getSalon } from "./api";
+import { getCinema, getMovie, getSalon } from "./api";
 
 export const getAvaliableMovies = async (cinemas) => {
   const salons = [];
@@ -26,4 +26,13 @@ export const getAvaliableMovies = async (cinemas) => {
     }
   }
   return movies;
+};
+
+export const getCinamasInCity = async (city) => {
+  const cinemas = [];
+  for (let cinemaId of city.cinemas) {
+    const cinema = await getCinema(cinemaId);
+    cinemas.push(cinema);
+  }
+  return cinemas;
 };

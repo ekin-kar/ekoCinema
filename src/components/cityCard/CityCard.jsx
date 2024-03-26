@@ -1,12 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
 import styles from "./citycard.module.css";
-const CityCard = ({ city }) => {
-  const router = useRouter();
+const CityCard = ({ city, onClick }) => {
   const handleClick = () => {
-    router.push(`/${city.name.toLowerCase()}`);
+    onClick(city);
   };
-
   return (
     <div className={styles.container} onClick={handleClick}>
       <p className={styles.cityName}>{city.name}</p>

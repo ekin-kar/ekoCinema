@@ -1,5 +1,5 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import styles from "./cinemacard.module.css";
 import Image from "next/image";
 const CinemaCard = ({ cinema, cityName }) => {
