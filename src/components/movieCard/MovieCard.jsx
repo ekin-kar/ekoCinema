@@ -2,11 +2,11 @@
 import { useRouter } from "next/navigation";
 import styles from "./moviecard.module.css";
 import Image from "next/image";
-const MovieCard = ({ movie, cityName }) => {
+const MovieCard = ({ movie, cityName, cinemaName }) => {
   const router = useRouter();
   const handleClick = () => {
     router.push(
-      `/${cityName.toLowerCase()}/movies/${movie.title
+      `/${cityName.toLowerCase()}/${cinemaName}/${movie.title
         .toLowerCase()
         .replace(/\s/g, "-")}`
     );

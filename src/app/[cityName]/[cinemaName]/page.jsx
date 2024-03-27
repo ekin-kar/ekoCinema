@@ -13,7 +13,7 @@ const Salon = async ({ params }) => {
         <div className={styles.innerContainer}>
           <h2 className={styles.title}>Films On Vision</h2>
           <div className={styles.moviesWrapper}>
-            <MoviesSection cityName={cityName} otherMovies={movies} />
+            <MoviesSection cityName={cityName} cinemaName={cinemaName} otherMovies={movies} />
           </div>
         </div>
       </div>

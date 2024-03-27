@@ -4,7 +4,7 @@ import MovieCard from "../movieCard/MovieCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const MoviesSection = ({ cityName, otherMovies }) => {
+const MoviesSection = ({ cityName, cinemaName, otherMovies }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -47,6 +47,7 @@ const MoviesSection = ({ cityName, otherMovies }) => {
       {otherMovies.map((otherMovie) => (
         <MovieCard
           cityName={cityName}
+          cinemaName={cinemaName}
           movie={otherMovie}
           key={otherMovie.title}
         >
