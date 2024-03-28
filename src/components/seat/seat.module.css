@@ -1,0 +1,21 @@
+.seat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(7473%) hue-rotate(187deg)
+    brightness(103%) contrast(96%);
+}
+
+.selected {
+  filter: invert(58%) sepia(45%) saturate(4118%) hue-rotate(91deg)
+    brightness(110%) contrast(106%);
+}
+
+.unavailable {
+  filter: invert(18%) sepia(32%) saturate(7410%) hue-rotate(351deg)
+    brightness(92%) contrast(126%);
+
+  cursor: not-allowed;
+}

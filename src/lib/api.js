@@ -15,18 +15,7 @@ export const getCity = async (id) => {
   return city.json();
 };
 
-export const getCityByName = async (name) => {
-  try {
-    connectToDb();
-    const city = await City.findOne({
-      name: { $regex: new RegExp("^" + name + "$", "i") },
-    });
-    return city;
-  } catch (error) {
-    console.error("Error while searching city by name:", error);
-    throw error;
-  }
-};
+
 
 export const getCinemas = async () => {
   const cinemas = await fetch("http://localhost:3000/api/cinemas", {
@@ -42,19 +31,7 @@ export const getCinema = async (id) => {
   return cinema.json();
 };
 
-export const getCinemaByName = async (name) => {
-  try {
-    connectToDb();
-    const modifiedName = name.replace(/-/g, " ").toLowerCase();
-    const cinema = await Cinema.findOne({
-      name: { $regex: new RegExp("^" + modifiedName + "$", "i") },
-    });
-    return cinema;
-  } catch (error) {
-    console.error("Error while searching cinema by name:", error);
-    throw error;
-  }
-};
+
 
 export const getMovies = async () => {
   const movies = await fetch("http://localhost:3000/api/movies", {

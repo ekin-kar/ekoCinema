@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const MoviesSection = ({ cityName, cinemaName, otherMovies }) => {
   const settings = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -16,21 +16,21 @@ const MoviesSection = ({ cityName, cinemaName, otherMovies }) => {
         breakpoint: 1536,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1280,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 864,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {

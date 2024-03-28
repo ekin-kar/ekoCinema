@@ -66,11 +66,18 @@ const cinemaSalonSchema = new Schema({
         ref: "Movie",
         required: true,
       },
-      date: {
-        type: Date,
-        default: Date.now,
-        required: true,
-      },
+      dates: [
+        {
+          day: {
+            type: "String",
+            required: true,
+          },
+          hours: {
+            type: [String],
+            required: true,
+          },
+        },
+      ],
       takenSeats: {
         type: [String],
         default: [],

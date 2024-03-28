@@ -1,10 +1,11 @@
-import { getCinemaByName } from "@/lib/api";
+import { getCinemaByName } from "@/lib/getters";
 import { getAvaliableMovies } from "@/lib/getters";
 import styles from "./salon.module.css";
 import MoviesSection from "@/components/moviesSection/MoviesSection";
 
 const Salon = async ({ params }) => {
   const { cinemaName, cityName } = params;
+  console.log(cinemaName, cityName);
   const cinema = await getCinemaByName(cinemaName);
   const movies = await getAvaliableMovies(cinema);
   return (
@@ -13,7 +14,11 @@ const Salon = async ({ params }) => {
         <div className={styles.innerContainer}>
           <h2 className={styles.title}>Films On Vision</h2>
           <div className={styles.moviesWrapper}>
-            <MoviesSection cityName={cityName} cinemaName={cinemaName} otherMovies={movies} />
+            <MoviesSection
+              cityName={cityName}
+              cinemaName={cinemaName}
+              otherMovies={movies}
+            />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 .container {
-  height: 240px;
+  height: 220px;
   width: 300px;
   background: rgba(255, 255, 255, 0.315);
   color: var(--white);
@@ -9,16 +9,16 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
+  margin-left: 10px;
 }
 
 .cinemaName {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .textContainer {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 5px;
   justify-content: center;
@@ -37,4 +37,3 @@
   transform: scale(1.03);
   transition: transform 0.3s ease;
 }
-

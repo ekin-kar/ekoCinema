@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/app/footer/Footer";
 
 export const metadata = {
   title: {

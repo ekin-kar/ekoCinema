@@ -1,4 +1,6 @@
-import { getCinema, getMovie, getSalon } from "./api";
+import { getCinema, getCities, getMovie, getSalon } from "./api";
+import { connectToDb } from "./connectDb";
+import { Cinema, City } from "./models";
 
 export const getAvaliableMovies = async (cinemas) => {
   const salons = [];
@@ -35,4 +37,31 @@ export const getCinamasInCity = async (city) => {
     cinemas.push(cinema);
   }
   return cinemas;
+};
+
+export const getCityByName = async (name) => {
+  try {
+    connectToDb();
+    const city = await City.findOne({
+      name: { $regex: new RegExp("^" + name + "$", "i") },
+    });
+    return city;
+  } catch (error) {
+    console.error("Error while searching city by name:", error);
+    throw error;
+  }
+};
+
+export const getCinemaByName = async (name) => {
+  try {
+    connectToDb();
+    const modifiedName = name.replace(/-/g, " ").toLowerCase();
+    const cinema = await Cinema.findOne({
+      name: { $regex: new RegExp("^" + modifiedName + "$", "i") },
+    });
+    return cinema;
+  } catch (error) {
+    console.error("Error while searching cinema by name:", error);
+    throw error;
+  }
 };
