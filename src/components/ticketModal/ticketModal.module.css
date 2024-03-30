@@ -11,8 +11,8 @@
 }
 
 .modalContent {
-  width: 600px;
-  height: 500px;
+  width: 800px;
+  height: 550px;
   background-color: var(--dark-blue);
   padding: 25px;
   border-radius: 5px;
@@ -69,7 +69,7 @@ s .modalContent h3 {
 
 .seats {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* Adjusted to match numSeatsPerRow */
+  grid-template-columns: repeat(16, 1fr);
   gap: 10px;
   justify-items: center;
 }
@@ -102,4 +102,22 @@ s .modalContent h3 {
 .selectedSeatsWrapper {
   margin-top: 20px;
   height: 20px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.footerButton {
+  padding: 10px 20px;
+  background-color: var(--yellow);
+  color: var(--dark-blue);
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

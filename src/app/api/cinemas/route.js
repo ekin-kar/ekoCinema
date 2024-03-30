@@ -1,5 +1,5 @@
 import { connectToDb } from "@/lib/connectDb";
-import { Cinema, CinemaSalon, City } from "@/lib/models";
+import { Cinema, City } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
@@ -44,29 +44,5 @@ export const DELETE = async () => {
   } catch (error) {
     console.log(error);
     throw new Error("Failed to delete all cinemas!", error);
-  }
-};
-
-export const PUT = async (req) => {
-  try {
-    const { cinemaId, salonId } = await req.json();
-    connectToDb();
-    const cinema = await Cinema.findById(cinemaId);
-    if (!cinema) {
-      return NextResponse.json({ error: "Cinema not found" }, { status: 404 });
-    }
-    const salon = await CinemaSalon.findById(salonId);
-    if (!salon) {
-      return NextResponse.json({ error: "Salon not found" }, { status: 404 });
-    }
-    cinema.salons.push(salonId);
-    await cinema.save();
-    return NextResponse.json({
-      message: `Salon ${salonId} added to cinema ${cinemaId}`,
-      cinema,
-    });
-  } catch (error) {
-    console.log(error);
-    throw new Error("Error adding salon to cinema!", error);
   }
 };

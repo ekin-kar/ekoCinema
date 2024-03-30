@@ -1,12 +1,26 @@
-"use client";
 import React, { useRef, useEffect, useState } from "react";
 import styles from "./ticketModal.module.css";
 import Seat from "../seat/Seat";
 
-const TicketModal = ({ closeModal, parameters }) => {
+const TicketModal = ({ closeModal, parameters, takenSeats, schedule }) => {
   const modalRef = useRef(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const takenSeats = ["A1", "B2"];
+  const updateSchedule = async (schedule, selectedSeats) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/schedules/${schedule._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ takenSeats: selectedSeats }),
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -36,7 +50,7 @@ const TicketModal = ({ closeModal, parameters }) => {
   };
 
   const numRows = 8;
-  const numSeatsPerRow = 10;
+  const numSeatsPerRow = 16;
   const seats = [];
   for (let row = 1; row <= numRows; row++) {
     for (let seatNum = 1; seatNum <= numSeatsPerRow; seatNum++) {
@@ -73,12 +87,24 @@ const TicketModal = ({ closeModal, parameters }) => {
               <Seat
                 key={index}
                 seat={seat}
-                takenseats={takenSeats}
+                takenSeats={takenSeats}
                 isSelected={selectedSeats.includes(seat)}
                 onClick={() => handleSeatClick(seat)}
               />
             ))}
           </div>
+        </div>
+        <div className={styles.footer}>
+          <button
+            className={styles.footerButton}
+            onClick={() => {
+              alert(`You bought tickets for ${selectedSeats.join(", ")}`);
+              updateSchedule(schedule, selectedSeats);
+              closeModal();
+            }}
+          >
+            Buy Tickets
+          </button>
         </div>
       </div>
     </div>

@@ -15,7 +15,17 @@ export const getCity = async (id) => {
   return city.json();
 };
 
-
+export const createCity = async (city) => {
+  try {
+    connectToDb();
+    const newCity = new City(city);
+    await newCity.save();
+    return newCity;
+  } catch (error) {
+    console.error("Error while creating city:", error);
+    throw error;
+  }
+};
 
 export const getCinemas = async () => {
   const cinemas = await fetch("http://localhost:3000/api/cinemas", {
@@ -30,8 +40,6 @@ export const getCinema = async (id) => {
   });
   return cinema.json();
 };
-
-
 
 export const getMovies = async () => {
   const movies = await fetch("http://localhost:3000/api/movies", {
@@ -86,4 +94,18 @@ export const getSalon = async (id) => {
     next: { revalidate: 1 },
   });
   return salon.json();
+};
+
+export const getSchedules = async () => {
+  const schedules = await fetch("http://localhost:3000/api/schedules", {
+    next: { revalidate: 1 },
+  });
+  return schedules.json();
+};
+
+export const getSchedule = async (id) => {
+  const schedule = await fetch(`http://localhost:3000/api/schedules/${id}`, {
+    next: { revalidate: 1 },
+  });
+  return schedule.json();
 };

@@ -1,33 +1,17 @@
-import { getCinema, getCities, getMovie, getSalon } from "./api";
+import { getCinema } from "./api";
 import { connectToDb } from "./connectDb";
-import { Cinema, City } from "./models";
+import { Cinema, City, Movie, Schedule } from "./models";
 
-export const getAvaliableMovies = async (cinemas) => {
-  const salons = [];
-  const cinemasArray = Array.isArray(cinemas) ? cinemas : [cinemas];
-  for (let cinema of cinemasArray) {
-    for (let salonId of cinema.salons) {
-      const salon = await getSalon(salonId);
-      salons.push(salon);
-    }
+export const getAvailableMovies = async (cinemaId) => {
+  try {
+    const schedules = await Schedule.find({ cinemaId });
+    const movieIds = schedules.map((schedule) => schedule.movieId);
+    const availableMovies = await Movie.find({ _id: { $in: movieIds } });
+    return availableMovies;
+  } catch (error) {
+    console.error("Error fetching available movies:", error);
+    throw new Error("Error fetching available movies");
   }
-  const schedules = [];
-  for (let salon of salons) {
-    for (let schedule of salon.schedule) {
-      schedules.push(schedule);
-    }
-  }
-  const movieIds = [];
-  const movies = [];
-  for (let schedule of schedules) {
-    const movieId = schedule.movieId;
-    if (!movieIds.includes(movieId)) {
-      movieIds.push(movieId);
-      const movie = await getMovie(movieId);
-      movies.push(movie);
-    }
-  }
-  return movies;
 };
 
 export const getCinamasInCity = async (city) => {
@@ -62,6 +46,16 @@ export const getCinemaByName = async (name) => {
     return cinema;
   } catch (error) {
     console.error("Error while searching cinema by name:", error);
+    throw error;
+  }
+};
+
+export const getSchedulesForMovie = async (cinemaId, movieId) => {
+  try {
+    const schedules = await Schedule.find({ cinemaId, movieId });
+    return schedules;
+  } catch (error) {
+    console.error("Error while searching schedules for movie:", error);
     throw error;
   }
 };

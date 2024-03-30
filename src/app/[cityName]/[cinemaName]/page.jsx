@@ -1,13 +1,11 @@
-import { getCinemaByName } from "@/lib/getters";
-import { getAvaliableMovies } from "@/lib/getters";
+import { getAvailableMovies, getCinemaByName } from "@/lib/getters";
 import styles from "./salon.module.css";
 import MoviesSection from "@/components/moviesSection/MoviesSection";
 
 const Salon = async ({ params }) => {
   const { cinemaName, cityName } = params;
-  console.log(cinemaName, cityName);
   const cinema = await getCinemaByName(cinemaName);
-  const movies = await getAvaliableMovies(cinema);
+  const movies = await getAvailableMovies(cinema.id);
   return (
     <div className={styles.bg}>
       <div className={styles.container}>
@@ -17,7 +15,7 @@ const Salon = async ({ params }) => {
             <MoviesSection
               cityName={cityName}
               cinemaName={cinemaName}
-              otherMovies={movies}
+              otherMovies={JSON.parse(JSON.stringify(movies))}
             />
           </div>
         </div>

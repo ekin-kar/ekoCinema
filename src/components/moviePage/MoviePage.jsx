@@ -11,16 +11,42 @@ const MoviePage = ({
   cinemaName,
   cityName,
   parameters,
-  schedule,
+  schedules,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleClick = () => {
+  const [takenSeats, setTakenSeats] = useState([]);
+  const [selectedSchedule, setSelectedSchedule] = useState(schedules[0]);
+
+  const handleClick = (schedule) => {
+    setTakenSeats(schedule.takenSeats);
+    setSelectedSchedule(schedule);
     setIsModalOpen(true);
   };
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  console.log(schedule);
+  const groupedSchedules = schedules.reduce((acc, schedule) => {
+    const key = `${new Date(schedule.date).toISOString().split("T")[0]}-${
+      schedule.salon
+    }`;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(schedule);
+    return acc;
+  }, {});
+
+  const mergedSchedules = Object.values(groupedSchedules).map((group) => {
+    return group.reduce((acc, schedule) => {
+      if (!acc.date) {
+        acc.date = schedule.date;
+        acc.salon = schedule.salon;
+        acc.hours = [];
+      }
+      acc.hours.push(schedule);
+      return acc;
+    }, {});
+  });
 
   return (
     <div className={styles.bg}>
@@ -93,7 +119,7 @@ const MoviePage = ({
         <div className={styles.schedulesWrapper}>
           <h2 className={styles.header}>Showtimes</h2>
           <div className={styles.scheduleWrapper}>
-            {schedule.dates.map((date, index) => (
+            {mergedSchedules.map((schedule, index) => (
               <div key={index} className={styles.schedule}>
                 <div className={styles.cinemaWrapper}>
                   <div className={styles.inlineSchedule}>
@@ -104,14 +130,7 @@ const MoviePage = ({
                       height={20}
                       className={styles.icon}
                     />
-                    <p className={styles.date}>
-                      {cinemaName
-                        .split("-")
-                        .map(
-                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
-                        )
-                        .join(" ")}
-                    </p>
+                    <p className={styles.date}>{schedule.salon}</p>
                   </div>
                   <div className={styles.inlineSchedule}>
                     <Image
@@ -121,18 +140,27 @@ const MoviePage = ({
                       height={20}
                       className={styles.icon}
                     />
-                    <h3 className={styles.date}>{date.day}</h3>
+                    <h3 className={styles.date}>
+                      {new Date(schedule.date).toLocaleDateString("en-US", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </h3>
                   </div>
                 </div>
                 <div className={styles.hours}>
-                  <p className={styles.smallText}>Avaliable hours</p>
-                  {date.hours.map((hour, index) => (
+                  <p className={styles.smallText}>Available hours</p>
+                  {schedule.hours.map((hourSchedule, index) => (
                     <div key={index}>
                       <button
                         className={styles.hourButton}
-                        onClick={handleClick}
+                        onClick={() => handleClick(hourSchedule)}
                       >
-                        {hour}
+                        {new Date(hourSchedule.date).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
                       </button>
                     </div>
                   ))}
@@ -153,7 +181,12 @@ const MoviePage = ({
         </div>
       </div>
       {isModalOpen && (
-        <TicketModal parameters={parameters} closeModal={closeModal} />
+        <TicketModal
+          parameters={parameters}
+          takenSeats={takenSeats}
+          closeModal={closeModal}
+          schedule={selectedSchedule}
+        />
       )}
     </div>
   );

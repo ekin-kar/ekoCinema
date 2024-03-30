@@ -1,8 +1,13 @@
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./seat.module.css";
 
-const Seat = ({ seat, isSelected, onClick, takenseats }) => {
-  const isSeatTaken = takenseats.includes(seat);
+const Seat = ({ seat, isSelected, onClick, takenSeats }) => {
+  const [isSeatTaken, setIsSeatTaken] = useState(false);
+
+  useEffect(() => {
+    setIsSeatTaken(takenSeats.includes(seat));
+  }, [takenSeats, seat]);
 
   return (
     <div
