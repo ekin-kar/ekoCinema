@@ -68,10 +68,9 @@
 
 .infoContainer {
   display: flex;
-  gap: 10px;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  padding: 20px;
   margin-top: 20px;
   background: rgba(20, 20, 20, 0.2);
   border-radius: 5px;
@@ -154,7 +153,7 @@
 }
 .offerPrice:hover {
   background-color: #fff568;
-  color: darkblue;
+  color: black;
   transition: ease 0.5s;
   cursor: pointer;
 }

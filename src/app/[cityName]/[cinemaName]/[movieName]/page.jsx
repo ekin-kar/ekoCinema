@@ -1,4 +1,4 @@
-import { getMovieByTitle, getMovies, getSalons } from "@/lib/api";
+import { getMovieByTitle, getMovies } from "@/lib/api";
 import MoviePage from "@/components/moviePage/MoviePage";
 import { getCinemaByName, getSchedulesForMovie } from "@/lib/getters";
 

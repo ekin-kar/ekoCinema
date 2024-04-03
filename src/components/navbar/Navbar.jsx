@@ -37,7 +37,7 @@ const Navbar = async () => {
             </option>
           </select>
         </div>
-        <button className={styles.button}>Sign In</button>
+        <button className={styles.button}>Sign Out</button>
       </div>
     </div>
   );
