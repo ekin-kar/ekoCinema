@@ -1,3 +1,29 @@
+# EkoCinema
+
+A cinema application that allow users to find the cinemas in their city, view available movies and buy tickets.
+Developed using NextJs and MongoDB.
+
+## Screenshots 
+
+Cinema Page
+
+![Screenshot_6](https://github.com/EkinKar/ekocinema/assets/56177544/a2db0ed7-4c14-490a-b145-8b309b04a2ff)
+
+Movie Page
+
+![Screenshot_7](https://github.com/EkinKar/ekocinema/assets/56177544/97c21e15-f251-4f0a-bd22-d1260a3bb405)
+
+Seat Selection 
+
+![Screenshot_8](https://github.com/EkinKar/ekocinema/assets/56177544/4404f6de-d5dd-46b0-9db6-1c347550d4af)
+
+A postman screenshot of avaliable collections and crud actions
+
+![Screenshot_9](https://github.com/EkinKar/ekocinema/assets/56177544/10ba7035-a159-4471-bcfb-d1be67159b68)
+
+
+***  
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
