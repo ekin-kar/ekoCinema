@@ -43,7 +43,7 @@ const MainPage = ({ cities }) => {
     <div className={styles.bg}>
       <div className={styles.container}>
         <h2 className={styles.title}>Welcome to EkoCinema!</h2>
-        <p className={styles.text}>Start by selecting your city</p>
+        <p className={styles.text}>Start by selecting your city!</p>
         <div className={styles.cityContainer}>
           {cities.map((city, index) => (
             <CityCard city={city} key={index} onClick={handleClick} />
